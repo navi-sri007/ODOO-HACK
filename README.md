@@ -22,6 +22,19 @@ SkillSwap is a minimal, user-friendly platform that enables users to share and e
 - 🕒 **Real-time Updates**: Changes reflected instantly (basic live sync)
 
 ---
+## Team Members:
+Naveena Sri S B
+naveesri06@gmail.com
+Narasinga Poorani A
+narasingapoorani30@gmail.com
+Oviya S
+727724eucs177@skcet.ac.in
+Prabha A S
+727724eucs180@skcet.ac.in
 
-Working model :
+---
+
+## Working model :
 https://navi-sri007.github.io/ODOO-HACK/
+ ## Video Demo:
+https://www.awesomescreenshot.com/video/41962489?key=2e38dd2cad9f5f0d37f651af7659cb51
