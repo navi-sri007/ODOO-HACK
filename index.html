@@ -17,6 +17,7 @@
           --accent-gradient: linear-gradient(135deg, #4facfe 0%, #18d3d3 100%);
           --success-gradient: linear-gradient(135deg, #df319a 0%, #4caf50 100%);
           --warning-gradient: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+          --danger-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
           --glass-bg: rgba(255, 255, 255, 0.1);
           --glass-border: rgba(255, 255, 255, 0.2);
           --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -759,6 +760,48 @@
           text-decoration: underline;
       }
 
+      /* Register Modal */
+      .register-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+          opacity: 0;
+          visibility: hidden;
+          transition: all var(--animation-fast) ease;
+      }
+
+      .register-modal.show {
+          opacity: 1;
+          visibility: visible;
+      }
+
+      .register-content {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border-radius: var(--border-radius);
+          padding: 3rem;
+          width: 90%;
+          max-width: 450px;
+          box-shadow: var(--shadow-heavy);
+          transform: scale(0.8) rotateX(20deg);
+          transition: all var(--animation-medium) ease;
+          border: 1px solid var(--glass-border);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .register-modal.show .register-content {
+          transform: scale(1) rotateX(0deg);
+      }
+
       /* Advanced Modal */
       .modal {
           position: fixed;
@@ -927,6 +970,310 @@
           box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
       }
 
+      /* Profile Modal */
+      .profile-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+          opacity: 0;
+          visibility: hidden;
+          transition: all var(--animation-fast) ease;
+      }
+
+      .profile-modal.show {
+          opacity: 1;
+          visibility: visible;
+      }
+
+      .profile-content {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border-radius: var(--border-radius);
+          padding: 3rem;
+          width: 90%;
+          max-width: 600px;
+          box-shadow: var(--shadow-heavy);
+          transform: scale(0.8) rotateX(20deg);
+          transition: all var(--animation-medium) ease;
+          border: 1px solid var(--glass-border);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .profile-modal.show .profile-content {
+          transform: scale(1) rotateX(0deg);
+      }
+
+      .profile-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2.5rem;
+          position: relative;
+          z-index: 1;
+      }
+
+      .profile-title {
+          font-size: 1.8rem;
+          font-weight: 800;
+          background: var(--primary-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+
+      .profile-close-btn {
+          background: none;
+          border: none;
+          font-size: 1.8rem;
+          cursor: pointer;
+          color: #999;
+          transition: all var(--animation-fast) ease;
+          padding: 0.5rem;
+          border-radius: 50%;
+      }
+
+      .profile-close-btn:hover {
+          color: #333;
+          background: rgba(255, 0, 0, 0.1);
+          transform: rotate(90deg) scale(1.2);
+      }
+
+      .profile-body {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+      }
+
+      .profile-info {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+      }
+
+      .profile-avatar-large {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background: var(--accent-gradient);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-size: 3rem;
+          font-weight: 700;
+          box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .profile-details {
+          flex: 1;
+      }
+
+      .profile-name-large {
+          font-size: 1.8rem;
+          font-weight: 800;
+          margin-bottom: 0.5rem;
+          color: #333;
+      }
+
+      .profile-email {
+          font-size: 1.1rem;
+          color: #666;
+          margin-bottom: 1rem;
+      }
+
+      .profile-stats {
+          display: flex;
+          gap: 1.5rem;
+      }
+
+      .stat-item {
+          text-align: center;
+      }
+
+      .stat-value {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #333;
+          margin-bottom: 0.2rem;
+      }
+
+      .stat-label {
+          font-size: 0.9rem;
+          color: #666;
+      }
+
+      .profile-skills-section {
+          margin-top: 1rem;
+      }
+
+      .profile-section-title {
+          font-size: 1.3rem;
+          font-weight: 700;
+          margin-bottom: 1.5rem;
+          color: #333;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+      }
+
+      .profile-actions {
+          display: flex;
+          gap: 1rem;
+          margin-top: 2rem;
+      }
+
+      .profile-action-btn {
+          flex: 1;
+          padding: 1rem;
+          border-radius: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all var(--animation-fast) ease;
+          text-align: center;
+      }
+
+      .edit-profile-btn {
+          background: var(--accent-gradient);
+          color: white;
+          border: none;
+          box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+      }
+
+      .edit-profile-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(79, 172, 254, 0.5);
+      }
+
+      .logout-profile-btn {
+          background: var(--danger-gradient);
+          color: white;
+          border: none;
+          box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+      }
+
+      .logout-profile-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(255, 75, 43, 0.5);
+      }
+
+      /* Edit Profile Modal */
+      .edit-profile-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2000;
+          opacity: 0;
+          visibility: hidden;
+          transition: all var(--animation-fast) ease;
+      }
+
+      .edit-profile-modal.show {
+          opacity: 1;
+          visibility: visible;
+      }
+
+      .edit-profile-content {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border-radius: var(--border-radius);
+          padding: 3rem;
+          width: 90%;
+          max-width: 600px;
+          box-shadow: var(--shadow-heavy);
+          transform: scale(0.8) rotateX(20deg);
+          transition: all var(--animation-medium) ease;
+          border: 1px solid var(--glass-border);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .edit-profile-modal.show .edit-profile-content {
+          transform: scale(1) rotateX(0deg);
+      }
+
+      .edit-skills-container {
+          margin-top: 2rem;
+      }
+
+      .skills-input-container {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1rem;
+      }
+
+      .skills-input {
+          flex: 1;
+          padding: 1rem;
+          border: 2px solid rgba(102, 126, 234, 0.2);
+          border-radius: 15px;
+          font-size: 1rem;
+          outline: none;
+          transition: all var(--animation-fast) ease;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(10px);
+      }
+
+      .add-skill-btn {
+          background: var(--success-gradient);
+          color: white;
+          border: none;
+          padding: 1rem 1.5rem;
+          border-radius: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all var(--animation-fast) ease;
+      }
+
+      .add-skill-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+      }
+
+      .skills-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.8rem;
+          margin-top: 1rem;
+      }
+
+      .skill-item {
+          background: var(--accent-gradient);
+          color: white;
+          padding: 0.6rem 1.2rem;
+          border-radius: 25px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+      }
+
+      .remove-skill-btn {
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 0.8rem;
+      }
+
       /* Enhanced Animations */
       @keyframes fadeInUp {
           from {
@@ -1035,6 +1382,22 @@
           backdrop-filter: blur(10px);
       }
 
+      /* Error Notification */
+      .error-notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--danger-gradient);
+          color: white;
+          padding: 1.5rem 2rem;
+          border-radius: 15px;
+          z-index: 3000;
+          box-shadow: var(--shadow-heavy);
+          animation: slideInRight 0.5s ease, bounceIn 0.5s ease;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(10px);
+      }
+
       /* User Profile Section */
       .profile-section {
           display: none;
@@ -1053,11 +1416,22 @@
           color: white;
           font-weight: 700;
           box-shadow: 0 4px 10px rgba(79, 172, 254, 0.4);
+          cursor: pointer;
+          transition: all var(--animation-fast) ease;
+      }
+
+      .profile-avatar:hover {
+          transform: scale(1.1);
       }
 
       .profile-name {
           color: white;
           font-weight: 600;
+          cursor: pointer;
+      }
+
+      .profile-name:hover {
+          text-decoration: underline;
       }
 
       .logout-btn {
@@ -1094,9 +1468,22 @@
               padding: 2rem;
           }
 
-          .modal-content, .login-content {
+          .modal-content, .login-content, .profile-content, .edit-profile-content {
               padding: 2rem;
               margin: 1rem;
+          }
+
+          .profile-info {
+              flex-direction: column;
+              text-align: center;
+          }
+
+          .profile-stats {
+              justify-content: center;
+          }
+
+          .profile-actions {
+              flex-direction: column;
           }
 
           .floating-shape {
@@ -1282,6 +1669,153 @@
       </div>
     </div>
 
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profileModal">
+      <div class="profile-content">
+        <div class="profile-header">
+          <h3 class="profile-title">
+            <i class="fas fa-user"></i> My Profile
+          </h3>
+          <button class="profile-close-btn" id="profileCloseBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="profile-body">
+          <div class="profile-info">
+            <div class="profile-avatar-large" id="profileAvatarLarge"></div>
+            <div class="profile-details">
+              <h2 class="profile-name-large" id="profileNameLarge"></h2>
+              <p class="profile-email" id="profileEmail"></p>
+              <div class="profile-stats">
+                <div class="stat-item">
+                  <div class="stat-value" id="skillsCount">0</div>
+                  <div class="stat-label">Skills</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value" id="wantsCount">0</div>
+                  <div class="stat-label">Wants to Learn</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value" id="swapsCount">0</div>
+                  <div class="stat-label">Swaps</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-skills-section">
+            <h3 class="profile-section-title">
+              <i class="fas fa-tools"></i> My Skills
+            </h3>
+            <div class="skills-tags" id="profileSkillsTags"></div>
+          </div>
+
+          <div class="profile-skills-section">
+            <h3 class="profile-section-title">
+              <i class="fas fa-heart"></i> Want to Learn
+            </h3>
+            <div class="skills-tags" id="profileWantsTags"></div>
+          </div>
+
+          <div class="profile-actions">
+            <button class="profile-action-btn edit-profile-btn" id="editProfileBtn">
+              <i class="fas fa-edit"></i> Edit Profile
+            </button>
+            <button class="profile-action-btn logout-profile-btn" id="logoutProfileBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="edit-profile-modal" id="editProfileModal">
+      <div class="edit-profile-content">
+        <div class="profile-header">
+          <h3 class="profile-title">
+            <i class="fas fa-edit"></i> Edit Profile
+          </h3>
+          <button class="profile-close-btn" id="editProfileCloseBtn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="profile-body">
+          <div class="login-form-group">
+            <label class="login-form-label">
+              <i class="fas fa-user"></i> Full Name
+            </label>
+            <input
+              type="text"
+              class="login-form-input"
+              id="editProfileName"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div class="login-form-group">
+            <label class="login-form-label">
+              <i class="fas fa-envelope"></i> Email
+            </label>
+            <input
+              type="email"
+              class="login-form-input"
+              id="editProfileEmail"
+              placeholder="Enter your email"
+              disabled
+            />
+          </div>
+
+          <div class="edit-skills-container">
+            <h3 class="profile-section-title">
+              <i class="fas fa-tools"></i> My Skills
+            </h3>
+            <div class="skills-input-container">
+              <input
+                type="text"
+                class="skills-input"
+                id="newSkillInput"
+                placeholder="Add a new skill"
+              />
+              <button class="add-skill-btn" id="addSkillBtn">
+                <i class="fas fa-plus"></i> Add
+              </button>
+            </div>
+            <div class="skills-list" id="skillsList"></div>
+          </div>
+
+          <div class="edit-skills-container">
+            <h3 class="profile-section-title">
+              <i class="fas fa-heart"></i> Want to Learn
+            </h3>
+            <div class="skills-input-container">
+              <input
+                type="text"
+                class="skills-input"
+                id="newWantInput"
+                placeholder="Add something you want to learn"
+              />
+              <button class="add-skill-btn" id="addWantBtn">
+                <i class="fas fa-plus"></i> Add
+              </button>
+            </div>
+            <div class="skills-list" id="wantsList"></div>
+          </div>
+
+          <div class="profile-actions">
+            <button class="profile-action-btn edit-profile-btn" id="saveProfileBtn">
+              <i class="fas fa-save"></i> Save Changes
+            </button>
+            <button class="profile-action-btn logout-profile-btn" id="cancelEditProfileBtn">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Swap Request Modal -->
     <div class="modal" id="requestModal">
       <div class="modal-content">
@@ -1351,7 +1885,8 @@
                   email: "alex@example.com",
                   password: "password123",
                   skills: ["HTML", "CSS", "JavaScript"],
-                  wants: ["React", "Design"]
+                  wants: ["React", "Design"],
+                  swapsCompleted: 5
               },
               {
                   id: 2,
@@ -1359,7 +1894,8 @@
                   email: "sarah@example.com",
                   password: "password123",
                   skills: ["React", "Node.js"],
-                  wants: ["Python", "Design"]
+                  wants: ["Python", "Design"],
+                  swapsCompleted: 3
               },
               {
                   id: 3,
@@ -1367,7 +1903,8 @@
                   email: "marcus@example.com",
                   password: "password123",
                   skills: ["Python", "Design"],
-                  wants: ["JavaScript", "React"]
+                  wants: ["JavaScript", "React"],
+                  swapsCompleted: 7
               }
           ],
           sessions: [],
@@ -1424,6 +1961,30 @@
       const profileAvatar = document.getElementById('profileAvatar');
       const profileName = document.getElementById('profileName');
       const logoutBtn = document.getElementById('logoutBtn');
+      const profileModal = document.getElementById('profileModal');
+      const profileCloseBtn = document.getElementById('profileCloseBtn');
+      const profileAvatarLarge = document.getElementById('profileAvatarLarge');
+      const profileNameLarge = document.getElementById('profileNameLarge');
+      const profileEmail = document.getElementById('profileEmail');
+      const skillsCount = document.getElementById('skillsCount');
+      const wantsCount = document.getElementById('wantsCount');
+      const swapsCount = document.getElementById('swapsCount');
+      const profileSkillsTags = document.getElementById('profileSkillsTags');
+      const profileWantsTags = document.getElementById('profileWantsTags');
+      const editProfileBtn = document.getElementById('editProfileBtn');
+      const logoutProfileBtn = document.getElementById('logoutProfileBtn');
+      const editProfileModal = document.getElementById('editProfileModal');
+      const editProfileCloseBtn = document.getElementById('editProfileCloseBtn');
+      const editProfileName = document.getElementById('editProfileName');
+      const editProfileEmail = document.getElementById('editProfileEmail');
+      const newSkillInput = document.getElementById('newSkillInput');
+      const addSkillBtn = document.getElementById('addSkillBtn');
+      const skillsList = document.getElementById('skillsList');
+      const newWantInput = document.getElementById('newWantInput');
+      const addWantBtn = document.getElementById('addWantBtn');
+      const wantsList = document.getElementById('wantsList');
+      const saveProfileBtn = document.getElementById('saveProfileBtn');
+      const cancelEditProfileBtn = document.getElementById('cancelEditProfileBtn');
 
       // Check if user is logged in on page load
       document.addEventListener('DOMContentLoaded', () => {
@@ -1462,6 +2023,12 @@
           localStorage.removeItem('skillswap_session');
           loginBtn.style.display = 'block';
           profileSection.style.display = 'none';
+          if (profileModal.classList.contains('show')) {
+              profileModal.classList.remove('show');
+          }
+          if (editProfileModal.classList.contains('show')) {
+              editProfileModal.classList.remove('show');
+          }
       }
 
       // Initialize user avatars
@@ -1768,7 +2335,8 @@
                   email: email,
                   password: password,
                   skills: [],
-                  wants: []
+                  wants: [],
+                  swapsCompleted: 0
               };
               
               database.users.push(newUser);
@@ -1797,8 +2365,227 @@
           }, 1500);
       };
 
+      // Profile functionality
+      profileAvatar.onclick = () => {
+          openProfileModal();
+      };
+
+      profileName.onclick = () => {
+          openProfileModal();
+      };
+
+      function openProfileModal() {
+          if (!currentUser) return;
+          
+          // Update profile modal with current user data
+          profileAvatarLarge.textContent = getInitials(currentUser.name);
+          profileNameLarge.textContent = currentUser.name;
+          profileEmail.textContent = currentUser.email;
+          skillsCount.textContent = currentUser.skills.length;
+          wantsCount.textContent = currentUser.wants.length;
+          swapsCount.textContent = currentUser.swapsCompleted || 0;
+          
+          // Update skills and wants tags
+          profileSkillsTags.innerHTML = currentUser.skills.map(skill => 
+              `<span class="skill-tag">${skill}</span>`
+          ).join('');
+          
+          profileWantsTags.innerHTML = currentUser.wants.map(want => 
+              `<span class="wants-tag">${want}</span>`
+          ).join('');
+          
+          profileModal.classList.add('show');
+      }
+
+      profileCloseBtn.onclick = () => {
+          profileModal.classList.remove('show');
+      };
+
+      profileModal.onclick = (e) => {
+          if (e.target === profileModal) {
+              profileModal.classList.remove('show');
+          }
+      };
+
+      // Edit profile functionality
+      editProfileBtn.onclick = () => {
+          if (!currentUser) return;
+          
+          // Populate edit form with current user data
+          editProfileName.value = currentUser.name;
+          editProfileEmail.value = currentUser.email;
+          
+          // Populate skills list
+          skillsList.innerHTML = currentUser.skills.map(skill => `
+              <div class="skill-item">
+                  ${skill}
+                  <button class="remove-skill-btn" data-skill="${skill}">
+                      <i class="fas fa-times"></i>
+                  </button>
+              </div>
+          `).join('');
+          
+          // Populate wants list
+          wantsList.innerHTML = currentUser.wants.map(want => `
+              <div class="skill-item">
+                  ${want}
+                  <button class="remove-skill-btn" data-want="${want}">
+                      <i class="fas fa-times"></i>
+                  </button>
+              </div>
+          `).join('');
+          
+          // Add event listeners to remove buttons
+          document.querySelectorAll('.remove-skill-btn[data-skill]').forEach(btn => {
+              btn.onclick = () => {
+                  const skill = btn.getAttribute('data-skill');
+                  skillsList.removeChild(btn.parentElement);
+              };
+          });
+          
+          document.querySelectorAll('.remove-skill-btn[data-want]').forEach(btn => {
+              btn.onclick = () => {
+                  const want = btn.getAttribute('data-want');
+                  wantsList.removeChild(btn.parentElement);
+              };
+          });
+          
+          profileModal.classList.remove('show');
+          editProfileModal.classList.add('show');
+      };
+
+      editProfileCloseBtn.onclick = () => {
+          editProfileModal.classList.remove('show');
+      };
+
+      cancelEditProfileBtn.onclick = () => {
+          editProfileModal.classList.remove('show');
+      };
+
+      editProfileModal.onclick = (e) => {
+          if (e.target === editProfileModal) {
+              editProfileModal.classList.remove('show');
+          }
+      };
+
+      // Add skill functionality
+      addSkillBtn.onclick = () => {
+          const skill = newSkillInput.value.trim();
+          if (!skill) return;
+          
+          // Check if skill already exists
+          const existingSkills = Array.from(skillsList.children).map(el => 
+              el.textContent.replace('×', '').trim()
+          );
+          
+          if (existingSkills.includes(skill)) {
+              showNotification('Skill already added', 'warning');
+              return;
+          }
+          
+          // Add new skill
+          const skillItem = document.createElement('div');
+          skillItem.className = 'skill-item';
+          skillItem.innerHTML = `
+              ${skill}
+              <button class="remove-skill-btn" data-skill="${skill}">
+                  <i class="fas fa-times"></i>
+              </button>
+          `;
+          
+          skillsList.appendChild(skillItem);
+          
+          // Add remove event listener
+          skillItem.querySelector('.remove-skill-btn').onclick = () => {
+              skillsList.removeChild(skillItem);
+          };
+          
+          newSkillInput.value = '';
+      };
+
+      // Add want functionality
+      addWantBtn.onclick = () => {
+          const want = newWantInput.value.trim();
+          if (!want) return;
+          
+          // Check if want already exists
+          const existingWants = Array.from(wantsList.children).map(el => 
+              el.textContent.replace('×', '').trim()
+          );
+          
+          if (existingWants.includes(want)) {
+              showNotification('Want to learn already added', 'warning');
+              return;
+          }
+          
+          // Add new want
+          const wantItem = document.createElement('div');
+          wantItem.className = 'skill-item';
+          wantItem.innerHTML = `
+              ${want}
+              <button class="remove-skill-btn" data-want="${want}">
+                  <i class="fas fa-times"></i>
+              </button>
+          `;
+          
+          wantsList.appendChild(wantItem);
+          
+          // Add remove event listener
+          wantItem.querySelector('.remove-skill-btn').onclick = () => {
+              wantsList.removeChild(wantItem);
+          };
+          
+          newWantInput.value = '';
+      };
+
+      // Save profile changes
+      saveProfileBtn.onclick = () => {
+          const newName = editProfileName.value.trim();
+          if (!newName) {
+              showNotification('Name cannot be empty', 'warning');
+              return;
+          }
+          
+          // Get updated skills and wants
+          const updatedSkills = Array.from(skillsList.children).map(el => 
+              el.textContent.replace('×', '').trim()
+          );
+          
+          const updatedWants = Array.from(wantsList.children).map(el => 
+              el.textContent.replace('×', '').trim()
+          );
+          
+          // Update current user in database
+          const userIndex = database.users.findIndex(u => u.id === currentUser.id);
+          if (userIndex !== -1) {
+              database.users[userIndex].name = newName;
+              database.users[userIndex].skills = updatedSkills;
+              database.users[userIndex].wants = updatedWants;
+              
+              // Update current user object
+              currentUser.name = newName;
+              currentUser.skills = updatedSkills;
+              currentUser.wants = updatedWants;
+              
+              // Update profile display
+              profileName.textContent = newName;
+              profileNameLarge.textContent = newName;
+              profileAvatar.textContent = getInitials(newName);
+              profileAvatarLarge.textContent = getInitials(newName);
+              
+              showNotification('Profile updated successfully', 'success');
+              editProfileModal.classList.remove('show');
+              openProfileModal();
+          }
+      };
+
       // Logout functionality
       logoutBtn.onclick = () => {
+          logoutUser();
+          showNotification('Logged out successfully', 'success');
+      };
+
+      logoutProfileBtn.onclick = () => {
           logoutUser();
           showNotification('Logged out successfully', 'success');
       };
@@ -1815,30 +2602,26 @@
       // Show notification
       function showNotification(message, type) {
           const notification = document.createElement('div');
-          notification.className = 'success-notification';
+          notification.className = type === 'error' ? 'error-notification' : 'success-notification';
           
           let icon = '';
-          let gradient = '';
           
           switch (type) {
               case 'success':
                   icon = 'fa-check-circle';
-                  gradient = 'var(--success-gradient)';
                   break;
               case 'error':
                   icon = 'fa-exclamation-circle';
-                  gradient = 'var(--secondary-gradient)';
                   break;
               case 'warning':
                   icon = 'fa-exclamation-triangle';
-                  gradient = 'var(--warning-gradient)';
+                  notification.className = 'success-notification';
+                  notification.style.background = 'var(--warning-gradient)';
                   break;
               default:
                   icon = 'fa-info-circle';
-                  gradient = 'var(--accent-gradient)';
           }
           
-          notification.style.background = gradient;
           notification.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
           document.body.appendChild(notification);
           
@@ -1874,6 +2657,12 @@
               }
               if (registerModal.classList.contains('show')) {
                   registerModal.classList.remove('show');
+              }
+              if (profileModal.classList.contains('show')) {
+                  profileModal.classList.remove('show');
+              }
+              if (editProfileModal.classList.contains('show')) {
+                  editProfileModal.classList.remove('show');
               }
           }
       });
